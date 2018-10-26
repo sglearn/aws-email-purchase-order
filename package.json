@@ -1,0 +1,22 @@
+{
+  "name": "aws-email-purchase-order",
+  "version": "1.0.0",
+  "description": "lambda function send email confirm purchase order",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sglearn/aws-email-purchase-order.git"
+  },
+  "author": "duongtdn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sglearn/aws-email-purchase-order/issues"
+  },
+  "homepage": "https://github.com/sglearn/aws-email-purchase-order#readme",
+  "dependencies": {
+    "aws-sdk": "^2.331.0"
+  }
+}
