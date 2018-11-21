@@ -25,6 +25,7 @@ function sendEmail({recipient, customer, invoice, banks}) {
   // The email body for recipients with non-HTML email clients.
   let body_text = "Dear " + customer + ",\r\n"
                   + "Your order at our service at " +  process.env.SERVICE + " "
+                  + "Order number: " + invoice.number + "\r\n"
                   + "has been placed successfully \r\n"
                   + "Purchased Items: \r\n"
 
@@ -34,7 +35,11 @@ function sendEmail({recipient, customer, invoice, banks}) {
 
   body_text += "Subtotal: " + invoice.subTotal
 
-  body_text += "Please complete your payment by wire transfer to one of the following accounts\r\n"
+  body_text += "Please complete your payment by wire transfer with following information:\r\n"
+
+  body_text += "Content:\r\n" + "pay for invoice number " + invoice.number + "\r\n"
+
+  body_text += "Banks: \r\n"
 
   for(let key in banks) {
     const bank = banks[key]
@@ -83,6 +88,7 @@ function sendEmail({recipient, customer, invoice, banks}) {
   `
 
   body_html += `
+    <h3> Order Number: ${invoice.number} </h3>
     <table>
       <tr>
         <th> Items </th>
@@ -108,7 +114,9 @@ function sendEmail({recipient, customer, invoice, banks}) {
   `
   body_html += `
     <br />
-    <p> Please complete your payment by wire transfer to one of the following accounts </p>
+    <p> Please complete your payment by wire transfer with following information </p>
+    <p> Content: </p>
+    <p> pay for invoice number ${invoice.number} </p>
   `
 
   for(let key in banks) {
